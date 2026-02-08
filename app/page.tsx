@@ -52,7 +52,7 @@ export default function Home() {
               }}
               className={poppins.className}
             >
-              a 15 year old programmer who is passionate about coding.
+              a 15 year old learner who is a coding enthusiast.
             </h3>
           </div>
           <div
