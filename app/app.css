@@ -1,0 +1,74 @@
+.main-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}
+.github-link {
+  color: "purple";
+  text-decoration: "none";
+  text-align: "left";
+  align-self: "flex-start";
+  transition: all 0.3s ease;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 300px;
+  margin-left: 25px;
+  opacity: 0.95;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.card:hover {
+  transform: scale(1.1) rotate(0deg) translate(0px, 0px) skewX(0deg);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  filter: brightness(1);
+}
+
+.github-link:hover {
+  transform: scale(1.1) rotate(0deg) translate(0px, -10px) skewX(0deg);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  filter: brightness(1.1);
+}
+.div-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  margin-left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .main-div {
+    flex-direction: column;
+  }
+  .div-2 {
+    flex-direction: column;
+  }
+  .img {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .card-container {
+    flex-direction: column;
+  }
+  .card {
+    margin-top: 25px;
+  }
+}
