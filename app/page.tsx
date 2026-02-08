@@ -1,65 +1,94 @@
 import Image from "next/image";
+import { Inter } from "next/font/google";
+import "./globals.css";
+const inter = Inter({ subsets: ["latin"], display: "swap" });
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home() {
+  // Creating a portofolio website using Next.js
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundImage: "url(/background.png)",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+          paddingTop: "100px",
+          flexDirection: "column",
+          padding: "10px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ alignItems: "flex-start" }}>
+            <h1 style={{ fontFamily: "Manrope, sans-serif" }}>
+              Hi! I am Smaran!
+            </h1>
+            <h3
+              style={{
+                fontWeight: "lighter",
+                color: "gray",
+                fontFamily: "Manrope, sans-serif",
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+              I am a 15 year old programmer who is passionate about coding.
+            </h3>
+          </div>
+          <div
+            style={{
+              padding: "15px",
+              backgroundColor: "#Faf9F9",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "5%",
+            }}
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src={"/portofolio_image.png"}
+              alt="profile"
+              width={250}
+              height={300}
+              style={{ borderRadius: "5%" }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <p className={inter.className}>
+              Smaran Pinisetty 24/25 School Year
+            </p>
+          </div>
         </div>
-      </main>
+        <p style={{ fontFamily: "Manrope, sans-serif", width: "50%" }}>
+          I started coding when I was in grade 3. I was mainly into block coding
+          in Scratch. Soon, I was introduced to web development by my mom and
+          created my first website when I was 10. I got my first computer, a
+          MacBook Pro at the age of 13. This led me to discovering React. From
+          there, I learned how to create multiple full stack applications which
+          can benefit my community. When I became 14, I discovered iOS
+          development and SwiftUI. Although it was challenging at first, I kept
+          learning until I became good at it. When I turned 15, I discovered the
+          Swift Student Challenge. I knew that this challenge could provide me
+          the opportunity to showcase my talent to the world. I started
+          developing an application that promotes creativity and critical
+          thinking for children. As of right now, I am developing my app and
+          continuing to attend hackathons to gain experience.
+        </p>
+      </div>
     </div>
   );
 }

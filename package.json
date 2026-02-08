@@ -9,9 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@expo-google-fonts/roboto": "^0.4.2",
+    "expo-font": "~13.0.4",
+    "expo-splash-screen": "^31.0.13",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
