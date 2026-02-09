@@ -4,10 +4,11 @@ const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
   display: "swap",
 });
-import { FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaGithub } from "react-icons/fa";
 import "./app.css";
 import { Poppins } from "next/font/google";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -290,6 +291,40 @@ export default function Home() {
               GitHub Repository
             </a>
           </div>
+        </div>
+        <h2 className={poppins.className} style={{ textAlign: "center" }}>
+          ⎯ Contact Me ⎯
+        </h2>
+
+        <div className="contact-box">
+          <a
+            href="https://www.instagram.com/smaran_dagoat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-item"
+          >
+            <FaInstagram size={22} />
+            <span>@smaran_dagoat</span>
+          </a>
+
+          <a
+            href="mailto:smaranpinisetty@gmail.com"
+            target="_blank"
+            className="contact-item"
+          >
+            <FaEnvelope size={22} />
+            <span>smaranpinisetty@gmail.com</span>
+          </a>
+
+          <a
+            href="https://github.com/smaranps"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-item"
+          >
+            <FaGithub size={22} />
+            <span>github.com/smaranps</span>
+          </a>
         </div>
       </div>
     </div>

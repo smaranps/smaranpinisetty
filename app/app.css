@@ -22,6 +22,41 @@
   border-radius: 5%;
 }
 
+.contact-box {
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  width: 50%;
+  background-color: #faf9f9;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  transition: background 0.25s ease, transform 0.2s ease;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+}
+
+.contact-item:hover {
+  background-color: #f0f0f0;
+  transform: translateX(4px);
+}
+
+.contact-item span {
+  word-break: break-all;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -73,5 +108,8 @@
   }
   .card {
     margin-top: 25px;
+  }
+  .contact-box {
+    flex-direction: column;
   }
 }
