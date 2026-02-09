@@ -15,11 +15,26 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 import React from "react";
-import { Carousel } from "react-responsive-carousel";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home() {
   // Creating a portofolio website using Next.js
+  const portfolioItems = [
+    {
+      src: "/portfolio-2024.png",
+      text: "Me in 2024/25 school year",
+    },
+    {
+      src: "/portfolio-2023.png",
+      text: "Me in 2023/24 school year",
+    },
+    {
+      src: "/portfolio-fun.png",
+      text: "Just vibing 😄",
+    },
+  ];
+
   return (
     <div
       style={{
@@ -42,7 +57,7 @@ export default function Home() {
       >
         <div className="main-div">
           <div style={{ alignItems: "flex-start" }}>
-            <h1 className={poppins.className}>Hello, I am Smaran!</h1>
+            <h1 className={poppins.className}>Hello, I am Smaran</h1>
             <h3
               style={{
                 fontWeight: "lighter",
@@ -52,7 +67,7 @@ export default function Home() {
               }}
               className={poppins.className}
             >
-              a passionate 15 year old who is a coding enthusiast.
+              a full stack developer and coding enthusiast.
             </h3>
           </div>
           <div
@@ -76,7 +91,7 @@ export default function Home() {
               height={300}
               style={{ borderRadius: "5%" }}
             />
-            <p className={googleSans.className}>Me in 2024/25 school year</p>
+            <p className={googleSans.className}>2025/26</p>
           </div>
         </div>
         <p
@@ -86,19 +101,23 @@ export default function Home() {
           }}
           className={googleSans.className}
         >
-          I started coding when I was in grade 3. I was mainly into block coding
-          in Scratch. Soon, I was introduced to web development by my mom and
-          created my first website when I was 10. I got my first computer, a
-          MacBook Pro at the age of 13. This led me to discovering React. From
-          there, I learned how to create multiple full stack applications which
-          can benefit my community. When I became 14, I discovered iOS
-          development and SwiftUI. Although it was challenging at first, I kept
-          learning until I became good at it. When I turned 15, I discovered the
-          Swift Student Challenge. I knew that this challenge could provide me
-          the opportunity to showcase my talent to the world. I started
-          developing an application that promotes creativity and critical
-          thinking for children. As of right now, I am developing my app and
-          continuing to attend hackathons to gain experience.
+          I live in Canada and I am currently in grade 10. I started coding when
+          I was in grade 3. I was mainly into block coding in Scratch. Soon, I
+          was introduced to web development by my mom and created my first
+          website when I was 10. I got my first computer, a MacBook Pro at the
+          age of 13. This led me to discovering React. From there, I learned how
+          to create multiple full stack applications which can benefit my
+          community. When I became 14, I discovered iOS development and SwiftUI.
+          Although it was challenging at first, I kept learning until I became
+          good at it. When I turned 15, I discovered the Swift Student
+          Challenge. I knew that this challenge could provide me the opportunity
+          to showcase my talent to the world. I started developing an
+          application that promotes creativity and critical thinking for
+          children. As of right now, I am developing my app and continuing to
+          attend hackathons to gain experience. Not only that, I am very
+          consistent academically by maintaining a 95 average throughout high
+          school and a part of multiple clubs such as DECA, ModelUN, Band and
+          more.
         </p>
         <h2 className={poppins.className} style={{ textAlign: "center" }}>
           ⎯ My Experience ⎯
@@ -237,7 +256,7 @@ export default function Home() {
               target="_blank"
             >
               <FaGithub size={20} style={{ marginRight: "5px" }} />
-              GitHub Repo
+              GitHub Repository
             </a>
           </div>
           <div className="card">
@@ -268,7 +287,7 @@ export default function Home() {
               target="_blank"
             >
               <FaGithub size={20} style={{ marginRight: "5px" }} />
-              GitHub Repo
+              GitHub Repository
             </a>
           </div>
         </div>

@@ -18,6 +18,9 @@
   align-self: "flex-start";
   transition: all 0.3s ease;
 }
+.fade {
+  border-radius: 5%;
+}
 
 .card {
   display: flex;
