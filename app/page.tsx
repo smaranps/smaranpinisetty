@@ -52,7 +52,7 @@ export default function Home() {
               }}
               className={poppins.className}
             >
-              a 15 year old learner who is a coding enthusiast.
+              a passionate 15 year old who is a coding enthusiast.
             </h3>
           </div>
           <div
@@ -196,7 +196,8 @@ export default function Home() {
               DoorstepDesserts is a website I made for my neighbours baking
               business. It is a fully functional website that takes orders from
               customers and allow payments using Stripe. This website was made
-              using React and Next.js.
+              using React and Next.js. This is a sample website which does not
+              have working payments.
             </p>
 
             <a
@@ -226,7 +227,8 @@ export default function Home() {
               into a few sentences, making it easier to interpret for students
               with learning disabilites.This App can also simplify questions
               instead of directly giving the answer to improve learning. This
-              was made using React Native.
+              was made using React Native with the help of Google's AI model,
+              Gemini 2.5 Flash.
             </p>
 
             <a
@@ -240,60 +242,33 @@ export default function Home() {
           </div>
           <div className="card">
             <Image
-              src={"/doorstep.png"}
-              alt="Doorstep Desserts"
-              width={310}
-              height={200}
+              src={"/twitter.png"}
+              alt="Mini Twitter"
+              width={280}
+              height={180}
             />
             <h3
               style={{ alignSelf: "flex-start" }}
               className={poppins.className}
             >
-              Doorstep Desserts
+              Mini Twitter
             </h3>
             <p className={googleSans.className}>
-              DoorstepDesserts is a website I made for my neighbours baking
-              business. It is a fully functional website that takes orders from
-              customers and allow payments using Stripe. This website was made
-              using React and Next.js.
+              Mini Twitter is the first full stack React Native application I
+              created. It is a Twitter clone where users can post tweets and
+              like other tweets. This was made using React Native with Expo,
+              Express.js and PostgreSQL. My future plans to improve this app
+              include having accounts, the ability to follow other users and
+              edit posts.
             </p>
 
             <a
               className={`${googleSans.className} github-link`}
-              href="https://doorstepdesserts-main.vercel.app"
+              href="https://github.com/smaranps/mini-twitter-final"
               target="_blank"
             >
-              <FaExternalLinkAlt size="0.8em" style={{ marginRight: "5px" }} />
-              Sample Demo
-            </a>
-          </div>
-          <div className="card">
-            <Image
-              src={"/doorstep.png"}
-              alt="Doorstep Desserts"
-              width={310}
-              height={200}
-            />
-            <h3
-              style={{ alignSelf: "flex-start" }}
-              className={poppins.className}
-            >
-              Doorstep Desserts
-            </h3>
-            <p className={googleSans.className}>
-              DoorstepDesserts is a website I made for my neighbours baking
-              business. It is a fully functional website that takes orders from
-              customers and allow payments using Stripe. This website was made
-              using React and Next.js.
-            </p>
-
-            <a
-              className={`${googleSans.className} github-link`}
-              href="https://doorstepdesserts-main.vercel.app"
-              target="_blank"
-            >
-              <FaExternalLinkAlt size="0.8em" style={{ marginRight: "5px" }} />
-              Sample Demo
+              <FaGithub size={20} style={{ marginRight: "5px" }} />
+              GitHub Repo
             </a>
           </div>
         </div>
