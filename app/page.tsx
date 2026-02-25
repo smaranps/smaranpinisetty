@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import { Google_Sans_Flex } from "next/font/google";
 const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
   display: "swap",
 });
+import { motion, Variants, useSpring, useScroll } from "framer-motion";
 import { FaEnvelope, FaGithub } from "react-icons/fa";
 import "./app.css";
 import { Poppins } from "next/font/google";
@@ -16,49 +18,70 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 import React from "react";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+const itemVariants: Variants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+    },
+  },
+};
 export default function Home() {
-  // Creating a portofolio website using Next.js
-  const portfolioItems = [
-    {
-      src: "/portfolio-2024.png",
-      text: "Me in 2024/25 school year",
-    },
-    {
-      src: "/portfolio-2023.png",
-      text: "Me in 2023/24 school year",
-    },
-    {
-      src: "/portfolio-fun.png",
-      text: "Just vibing 😄",
-    },
-  ];
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "whitesmoke",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="bg">
       <div
         style={{
           display: "flex",
           justifyContent: "space-evenly",
           alignItems: "center",
-          paddingTop: "100px",
+
           flexDirection: "column",
           padding: "10px",
+          paddingTop: "120px",
         }}
       >
-        <div className="main-div">
+        <nav className="floating-nav">
+          <a href="#about" className={poppins.className}>
+            About
+          </a>
+          <a href="#experience" className={poppins.className}>
+            Experience
+          </a>
+          <a href="#work" className={poppins.className}>
+            Work
+          </a>
+          <a href="#contact" className={poppins.className}>
+            Contact
+          </a>
+
+          <motion.div className="nav-progress-bar" style={{ scaleX }} />
+        </nav>
+        <div className="main-div" id="about">
           <div style={{ alignItems: "flex-start" }}>
-            <h1 className={poppins.className}>Hello, I am Smaran</h1>
+            <h1 className={poppins.className}>
+              Hello, I am <span className="gradient-text">Smaran.</span>
+            </h1>
             <h3
               style={{
                 fontWeight: "lighter",
@@ -68,7 +91,7 @@ export default function Home() {
               }}
               className={poppins.className}
             >
-              a full stack developer and coding enthusiast.
+              A full stack developer and coding enthusiast.
             </h3>
           </div>
           <div
@@ -80,7 +103,7 @@ export default function Home() {
               alignItems: "center",
               justifyContent: "center",
               borderRadius: "5%",
-              boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+              boxShadow: " 0 20px 40px rgba(0, 113, 227, 0.35)",
               marginTop: "20px",
               width: "270px",
             }}
@@ -99,6 +122,8 @@ export default function Home() {
           style={{
             width: "70%",
             marginTop: "50px",
+            textAlign: "center",
+            fontSize: "17px",
           }}
           className={googleSans.className}
         >
@@ -120,82 +145,119 @@ export default function Home() {
           school and a part of multiple clubs such as DECA, ModelUN, Band and
           more.
         </p>
-        <h2 className={poppins.className} style={{ textAlign: "center" }}>
+        <h2
+          id="experience"
+          className={poppins.className}
+          style={{ textAlign: "center" }}
+        >
           ⎯ My Experience ⎯
         </h2>
-        <div className="div-2">
-          <Image
-            src={"/download.png"}
-            alt="React Native"
-            width={50}
-            height={50}
-          />
-          <Image
-            className="img"
-            src={"/swiftui.png"}
-            alt="swiftUI"
-            width={50}
-            height={50}
-          />
-          <Image
-            className="img"
-            src={"/nextjs.png"}
-            alt="Next.Js"
-            width={100}
-            height={100}
-          />
-          <Image
-            className="img"
-            src={"/python.png"}
-            alt="Python"
-            width={50}
-            height={50}
-          />
-          <Image
-            className="img"
-            src={"/expoapp.png"}
-            alt="Expo"
-            width={40}
-            height={40}
-          />
-          <Image
-            className="img"
-            src={"/js.png"}
-            alt="JavaScript"
-            width={50}
-            height={50}
-          />
-          <Image
-            className="img"
-            src={"/css.png"}
-            alt="Tailwind CSS"
-            width={130}
-            height={80}
-          />
-          <Image
-            className="img"
-            src={"/bootstrap.png"}
-            alt="Bootstrap"
-            width={50}
-            height={40}
-          />
-          <Image
-            className="img"
-            src={"/node.png"}
-            alt="node.js"
-            width={70}
-            height={50}
-          />
-          <Image
-            className="img"
-            src={"/postgres.png"}
-            alt="postgresql"
-            width={70}
-            height={70}
-          />
-        </div>
 
-        <h2 className={poppins.className} style={{ textAlign: "center" }}>
+        <motion.div
+          className="div-2"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div variants={itemVariants}>
+            <Image
+              src={"/download.png"}
+              alt="React Native"
+              className="img"
+              width={50}
+              height={50}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={"/swiftui.png"}
+              alt="swiftUI"
+              className="img"
+              width={50}
+              height={50}
+            />
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/nextjs.png"}
+              alt="Next.Js"
+              width={100}
+              height={100}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/python.png"}
+              alt="Python"
+              width={50}
+              height={50}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/expoapp.png"}
+              alt="Expo"
+              width={40}
+              height={40}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/js.png"}
+              alt="JavaScript"
+              width={50}
+              height={50}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/css.png"}
+              alt="Tailwind CSS"
+              width={130}
+              height={80}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/bootstrap.png"}
+              alt="Bootstrap"
+              width={50}
+              height={40}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/node.png"}
+              alt="node.js"
+              width={70}
+              height={50}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              className="img"
+              src={"/postgres.png"}
+              alt="postgresql"
+              width={70}
+              height={70}
+            />
+          </motion.div>
+        </motion.div>
+
+        <h2
+          className={poppins.className}
+          style={{ textAlign: "center" }}
+          id="work"
+        >
           ⎯ My Work ⎯
         </h2>
         <div className="card-container">
@@ -296,7 +358,7 @@ export default function Home() {
           ⎯ Contact Me ⎯
         </h2>
 
-        <div className="contact-box">
+        <div className="contact-box" id="contact">
           <a
             href="https://www.instagram.com/smaran_dagoat"
             target="_blank"
