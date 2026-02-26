@@ -112,6 +112,10 @@ html {
   justify-content: center;
   align-items: center;
 }
+.github-link:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
 .img {
   margin-left: 20px;
   filter: grayscale(20%);
@@ -140,7 +144,10 @@ html {
     margin-top: 25px;
   }
   .contact-box {
+    width: 90%;
     flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 1rem;
   }
 }
 .floating-nav {

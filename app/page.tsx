@@ -138,6 +138,7 @@ export default function Home() {
                 width={260}
                 height={300}
                 style={{ borderRadius: "5%" }}
+                priority
               />
               <p className={googleSans.className}>2025/26</p>
             </div>
