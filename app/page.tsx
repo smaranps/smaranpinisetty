@@ -40,6 +40,17 @@ const itemVariants: Variants = {
     },
   },
 };
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.21, 0.45, 0.32, 0.9],
+    },
+  },
+};
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -79,10 +90,22 @@ export default function Home() {
         </nav>
         <div className="main-div" id="about">
           <div style={{ alignItems: "flex-start" }}>
-            <h1 className={poppins.className}>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className={poppins.className}
+              style={{ fontSize: "45px" }}
+            >
               Hello, I am <span className="gradient-text">Smaran.</span>
-            </h1>
-            <h3
+            </motion.h1>
+
+            <motion.h3
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               style={{
                 fontWeight: "lighter",
                 color: "gray",
@@ -92,33 +115,39 @@ export default function Home() {
               className={poppins.className}
             >
               A full stack developer and coding enthusiast.
-            </h3>
+            </motion.h3>
           </div>
-          <div
-            style={{
-              padding: "15px",
-              backgroundColor: "#Faf9F9",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "5%",
-              boxShadow: " 0 20px 40px rgba(0, 113, 227, 0.35)",
-              marginTop: "20px",
-              width: "270px",
-            }}
-          >
-            <Image
-              src={"/portfolio.png"}
-              alt="profile"
-              width={260}
-              height={300}
-              style={{ borderRadius: "5%" }}
-            />
-            <p className={googleSans.className}>2025/26</p>
-          </div>
+          <motion.div variants={fadeInUp} className="img">
+            <div
+              style={{
+                padding: "15px",
+                backgroundColor: "#Faf9F9",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "5%",
+                boxShadow: " 0 20px 40px rgba(0, 113, 227, 0.35)",
+                marginTop: "20px",
+                width: "270px",
+              }}
+            >
+              <Image
+                src={"/portfolio.png"}
+                alt="profile"
+                width={260}
+                height={300}
+                style={{ borderRadius: "5%" }}
+              />
+              <p className={googleSans.className}>2025/26</p>
+            </div>
+          </motion.div>
         </div>
-        <p
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           style={{
             width: "70%",
             marginTop: "50px",
@@ -140,14 +169,19 @@ export default function Home() {
           consistent academically by maintaining a 95 average throughout high
           school and a part of multiple clubs such as DECA, ModelUN, Band and
           more.
-        </p>
-        <h2
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           id="experience"
           className={poppins.className}
           style={{ textAlign: "center" }}
         >
           ⎯ My Experience ⎯
-        </h2>
+        </motion.h2>
 
         <motion.div
           className="div-2"
@@ -249,107 +283,128 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        <h2
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className={poppins.className}
           style={{ textAlign: "center" }}
           id="work"
         >
+          {" "}
           ⎯ My Work ⎯
-        </h2>
-        <div className="card-container">
-          <div className="card">
-            <Image
-              src={"/doorstep.png"}
-              alt="Doorstep Desserts"
-              width={310}
-              height={200}
-            />
-            <h3
-              style={{ alignSelf: "flex-start" }}
-              className={poppins.className}
-            >
-              Doorstep Desserts
-            </h3>
-            <p className={googleSans.className}>
-              DoorstepDesserts is a website I made for my neighbours baking
-              business. It is a fully functional website that takes orders from
-              customers and allow payments using Stripe. This website was made
-              using React and Next.js. This is a sample website which does not
-              have working payments.
-            </p>
+        </motion.h2>
 
-            <a
-              className={`${googleSans.className} github-link`}
-              href="https://doorstepdesserts-main.vercel.app"
-              target="_blank"
-            >
-              <FaExternalLinkAlt size="0.8em" style={{ marginRight: "5px" }} />
-              Demo
-            </a>
-          </div>
-          <div className="card">
-            <Image
-              src={"/echo.jpg"}
-              alt="Doorstep Desserts"
-              width={300}
-              height={190}
-            />
-            <h3
-              style={{ alignSelf: "flex-start" }}
-              className={poppins.className}
-            >
-              EchoNotes
-            </h3>
-            <p style={{ fontSize: "15px" }} className={googleSans.className}>
-              EchoNotes is an app that can take long lectures and convert them
-              into a few sentences, making it easier to interpret for students
-              with learning disabilites.This App can also simplify questions
-              instead of directly giving the answer to improve learning. This
-              was made using React Native with the help of Google's AI model,
-              Gemini 2.5 Flash.
-            </p>
+        <motion.div
+          className="card-container"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div variants={itemVariants}>
+            <div className="card">
+              <Image
+                src={"/doorstep.png"}
+                alt="Doorstep Desserts"
+                width={310}
+                height={200}
+              />
+              <h3
+                style={{ alignSelf: "flex-start" }}
+                className={poppins.className}
+              >
+                Doorstep Desserts
+              </h3>
+              <p className={googleSans.className}>
+                DoorstepDesserts is a website I made for my neighbours baking
+                business. It is a fully functional website that takes orders
+                from customers and allow payments using Stripe. This website was
+                made using React and Next.js. This is a sample website which
+                does not have working payments.
+              </p>
 
-            <a
-              className={`${googleSans.className} github-link`}
-              href="https://github.com/smaranps/echoNotes"
-              target="_blank"
-            >
-              <FaGithub size={20} style={{ marginRight: "5px" }} />
-              GitHub Repository
-            </a>
-          </div>
-          <div className="card">
-            <Image
-              src={"/twitter.png"}
-              alt="Mini Twitter"
-              width={280}
-              height={180}
-            />
-            <h3
-              style={{ alignSelf: "flex-start" }}
-              className={poppins.className}
-            >
-              Mini Twitter
-            </h3>
-            <p className={googleSans.className}>
-              Mini Twitter is the first full stack React Native application I
-              created. It is a Twitter clone where users can post tweets and
-              like other tweets. This was made using React Native with Expo,
-              Express.js and PostgreSQL. My future plans to improve this app
-              include having accounts, the ability to follow other users and
-              edit posts.
-            </p>
+              <a
+                className={`${googleSans.className} github-link`}
+                href="https://doorstepdesserts-main.vercel.app"
+                target="_blank"
+              >
+                <FaExternalLinkAlt
+                  size="0.8em"
+                  style={{ marginRight: "5px" }}
+                />
+                Demo
+              </a>
+            </div>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <div className="card">
+              <Image
+                src={"/echo.jpg"}
+                alt="Doorstep Desserts"
+                width={300}
+                height={190}
+              />
+              <h3
+                style={{ alignSelf: "flex-start" }}
+                className={poppins.className}
+              >
+                EchoNotes
+              </h3>
+              <p style={{ fontSize: "15px" }} className={googleSans.className}>
+                EchoNotes is an app that can take long lectures and convert them
+                into a few sentences, making it easier to interpret for students
+                with learning disabilites.This App can also simplify questions
+                instead of directly giving the answer to improve learning. This
+                was made using React Native with the help of Google's AI model,
+                Gemini 2.5 Flash.
+              </p>
 
-            <a
-              className={`${googleSans.className} github-link`}
-              href="https://github.com/smaranps/mini-twitter-final"
-              target="_blank"
-            >
-              <FaGithub size={20} style={{ marginRight: "5px" }} />
-              GitHub Repository
-            </a>
-          </div>
-        </div>
+              <a
+                className={`${googleSans.className} github-link`}
+                href="https://github.com/smaranps/echoNotes"
+                target="_blank"
+              >
+                <FaGithub size={20} style={{ marginRight: "5px" }} />
+                GitHub Repository
+              </a>
+            </div>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <div className="card">
+              <Image
+                src={"/twitter.png"}
+                alt="Mini Twitter"
+                width={280}
+                height={180}
+              />
+              <h3
+                style={{ alignSelf: "flex-start" }}
+                className={poppins.className}
+              >
+                Mini Twitter
+              </h3>
+              <p className={googleSans.className}>
+                Mini Twitter is the first full stack React Native application I
+                created. It is a Twitter clone where users can post tweets and
+                like other tweets. This was made using React Native with Expo,
+                Express.js and PostgreSQL. My future plans to improve this app
+                include having accounts, the ability to follow other users and
+                edit posts.
+              </p>
+
+              <a
+                className={`${googleSans.className} github-link`}
+                href="https://github.com/smaranps/mini-twitter-final"
+                target="_blank"
+              >
+                <FaGithub size={20} style={{ marginRight: "5px" }} />
+                GitHub Repository
+              </a>
+            </div>
+          </motion.div>
+        </motion.div>
         <h2 className={poppins.className} style={{ textAlign: "center" }}>
           ⎯ Contact Me ⎯
         </h2>
