@@ -72,7 +72,7 @@ export default function Home() {
             Work
           </a>
           <a href="#contact" className={poppins.className}>
-            Contact
+            Contact Me
           </a>
 
           <motion.div className="nav-progress-bar" style={{ scaleX }} />
@@ -135,11 +135,7 @@ export default function Home() {
           to create multiple full stack applications which can benefit my
           community. When I became 14, I discovered iOS development and SwiftUI.
           Although it was challenging at first, I kept learning until I became
-          good at it. When I turned 15, I discovered the Swift Student
-          Challenge. I knew that this challenge could provide me the opportunity
-          to showcase my talent to the world. I started developing an
-          application that promotes creativity and critical thinking for
-          children. As of right now, I am developing my app and continuing to
+          good at it. As of right now, I am developing my app and continuing to
           attend hackathons to gain experience. Not only that, I am very
           consistent academically by maintaining a 95 average throughout high
           school and a part of multiple clubs such as DECA, ModelUN, Band and
