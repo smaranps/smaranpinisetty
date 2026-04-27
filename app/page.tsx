@@ -293,7 +293,6 @@ export default function Home() {
           style={{ textAlign: "center" }}
           id="work"
         >
-          {" "}
           ⎯ My Work ⎯
         </motion.h2>
 
@@ -311,6 +310,7 @@ export default function Home() {
                 alt="Doorstep Desserts"
                 width={310}
                 height={200}
+                style={{ borderRadius: 15 }}
               />
               <h3
                 style={{ alignSelf: "flex-start" }}
@@ -345,6 +345,7 @@ export default function Home() {
                 src={"/echo.jpg"}
                 alt="Doorstep Desserts"
                 width={300}
+                style={{ borderRadius: 15 }}
                 height={190}
               />
               <h3
@@ -372,32 +373,34 @@ export default function Home() {
               </a>
             </div>
           </motion.div>
+
           <motion.div variants={itemVariants}>
             <div className="card">
               <Image
-                src={"/twitter.png"}
-                alt="Mini Twitter"
-                width={280}
-                height={180}
+                src={"/ChronoCraft.png"}
+                alt="ChronoCraft"
+                width={300}
+                height={200}
+                style={{ borderRadius: 15 }}
               />
               <h3
                 style={{ alignSelf: "flex-start" }}
                 className={poppins.className}
               >
-                Mini Twitter
+                ChronoCraft
               </h3>
               <p className={googleSans.className}>
-                Mini Twitter is the first full stack React Native application I
-                created. It is a Twitter clone where users can post tweets and
-                like other tweets. This was made using React Native with Expo,
-                Express.js and PostgreSQL. My future plans to improve this app
-                include having accounts, the ability to follow other users and
-                edit posts.
+                ChronoCraft is an interactive World Builder which allows users
+                to create their own worlds by choosing from a variety of
+                choices, allowing users to understand the cause and effect
+                relationship of past decisions. This was created using SwiftUI
+                and was my first ever submission for the Swift Student
+                Challenge, 2026 edition.
               </p>
 
               <a
                 className={`${googleSans.className} github-link`}
-                href="https://github.com/smaranps/mini-twitter-final"
+                href="https://github.com/smaranps/chronocraft/tree/main"
                 target="_blank"
               >
                 <FaGithub size={20} style={{ marginRight: "5px" }} />
