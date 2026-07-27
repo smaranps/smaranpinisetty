@@ -95,6 +95,7 @@ export default function Home() {
             alignItems: "center",
             gap: "12px",
           }}
+          className="responsive"
         >
           <TimeLocation />
           <ThemeToggle />
