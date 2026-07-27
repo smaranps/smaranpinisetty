@@ -70,36 +70,24 @@ export default function Home() {
 
   return (
     <div className="bg relative min-h-screen">
+      <div style={{ position: "fixed", top: "20px", left: "20px", zIndex: 50 }}>
+        <LiveStatus />
+      </div>
+
       <div
         style={{
           position: "fixed",
           top: "20px",
-          left: "0",
-          right: "0",
+          right: "20px",
           zIndex: 50,
-          padding: "0 24px",
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
-          pointerEvents: "none",
+          gap: "12px",
         }}
+        className="responsive"
       >
-        <div style={{ pointerEvents: "auto" }}>
-          <LiveStatus />
-        </div>
-
-        <div
-          style={{
-            pointerEvents: "auto",
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-          }}
-          className="responsive"
-        >
-          <TimeLocation />
-          <ThemeToggle />
-        </div>
+        <TimeLocation />
+        <ThemeToggle />
       </div>
 
       <CursorGlow />

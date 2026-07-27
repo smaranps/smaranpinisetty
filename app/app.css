@@ -348,7 +348,7 @@ html.dark .profile-photo-card {
   }
 }
 
-div[style*="position: fixed"][style*="filter: blur"] {
+.bg-glow-blur {
   width: 250px !important;
   height: 250px !important;
   left: 50% !important;
