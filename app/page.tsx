@@ -7,7 +7,7 @@ import { motion, Variants, useSpring, useScroll } from "framer-motion";
 import {
   FaEnvelope,
   FaGithub,
-  FaInstagram,
+  FaLinkedin,
   FaExternalLinkAlt,
 } from "react-icons/fa";
 import Typewriter from "./components/typewrite";
@@ -28,6 +28,7 @@ import GlitchedName from "./components/glitchEffect";
 
 import "./app.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FaL } from "react-icons/fa6";
 
 const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
@@ -526,13 +527,13 @@ export default function Home() {
 
         <div className="contact-box" id="contact">
           <a
-            href="https://www.instagram.com/smaran_dagoat"
+            href="https://www.linkedin.com/in/smaran-pinisetty-42183a41b/"
             target="_blank"
             rel="noopener noreferrer"
             className="contact-item"
           >
-            <FaInstagram size={22} />
-            <span>@smaran_dagoat</span>
+            <FaLinkedin size={22} />
+            <span>@smaranpinisetty</span>
           </a>
 
           <a href="mailto:smaranpinisetty@gmail.com" className="contact-item">
