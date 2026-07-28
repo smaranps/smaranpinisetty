@@ -10,7 +10,9 @@ import {
   FaInstagram,
   FaExternalLinkAlt,
 } from "react-icons/fa";
+import Typewriter from "./components/typewrite";
 
+import ContactForm from "./components/form";
 import InteractiveGrid from "./components/InteractiveGrid";
 import CustomCursor from "./components/cursor";
 import GitHubStats from "./components/stats";
@@ -176,7 +178,13 @@ export default function Home() {
                   margin: "0 0 16px 0",
                 }}
               >
-                16 year old from Toronto, A Full Stack & iOS Developer
+                <Typewriter
+                  words={[
+                    "16 year old from Toronto, A Full Stack & iOS Developer",
+                    "Building apps & competing in hackathons",
+                    "Passionate about Full Stack Development and SwiftUI",
+                  ]}
+                />
               </h3>
             </div>
 
@@ -512,6 +520,9 @@ export default function Home() {
         >
           ⎯ Contact Me ⎯
         </h2>
+        <div style={{ width: "100%", padding: "0 20px", margin: "20px 0" }}>
+          <ContactForm />
+        </div>
 
         <div className="contact-box" id="contact">
           <a

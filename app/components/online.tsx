@@ -17,15 +17,36 @@ export default function LiveStatus() {
   useEffect(() => {
     setMounted(true);
 
-    const initial = Math.floor(Math.random() * 3) + 1;
-    setOnlineCount(initial);
+    setOnlineCount(Math.random() > 0.4 ? 1 : 2);
 
-    const interval = setInterval(() => {
-      const change = Math.random() > 0.5 ? 1 : -1;
-      setOnlineCount((prev) => Math.max(1, prev + change));
-    }, 20000);
+    let timeoutId: NodeJS.Timeout;
 
-    return () => clearInterval(interval);
+    const scheduleNextUpdate = () => {
+      const nextInterval = Math.floor(Math.random() * 9000) + 6000;
+
+      timeoutId = setTimeout(() => {
+        setOnlineCount((prev) => {
+          const rand = Math.random();
+
+          if (rand < 0.7) {
+            return prev;
+          }
+
+          if (rand < 0.9) {
+            return Math.max(1, prev - 1);
+          }
+
+          const nextVal = prev + 1;
+          return nextVal > 4 ? 2 : nextVal;
+        });
+
+        scheduleNextUpdate();
+      }, nextInterval);
+    };
+
+    scheduleNextUpdate();
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const isDark = mounted && resolvedTheme === "dark";

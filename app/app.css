@@ -286,8 +286,8 @@ html.dark .profile-photo-card {
 .contact-box {
   margin: 2rem auto;
   padding: 1.5rem 2rem;
-  width: 50%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 800px;
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
   display: flex;
@@ -354,6 +354,15 @@ html.dark .profile-photo-card {
   left: 50% !important;
   transform: translateX(-50%) !important;
   opacity: 0.5 !important;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 @media screen and (max-width: 768px) {
