@@ -170,12 +170,12 @@ export default function Home() {
                 </span>
               </h1>
               <h3
-                className={poppins.className}
                 style={{
                   fontSize: "18px",
                   fontWeight: 500,
                   color: "#0071e3",
                   margin: "0 0 16px 0",
+                  fontFamily: "var(--font-geist-mono), monospace, system-ui",
                 }}
               >
                 <Typewriter

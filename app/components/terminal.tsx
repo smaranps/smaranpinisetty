@@ -17,7 +17,7 @@ type CommandOutput = {
 
 export default function TerminalCard() {
   const [input, setInput] = useState("");
-  const { resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 
   const [history, setHistory] = useState<CommandOutput[]>([
@@ -38,30 +38,47 @@ export default function TerminalCard() {
 
     let response: React.ReactNode = "";
 
-    switch (cmd) {
-      case "help":
-        response = "Available: info, stack, projects, status, clear, future";
+    switch (true) {
+      case cmd === "help":
+        response =
+          "Available: info, stack, projects, status, theme <dark/light>, date, whoami, clear";
         break;
-      case "info":
-      case "smaran --info":
-        response = "Full-Stack & iOS Dev | 95% Avg";
+      case cmd === "info" || cmd === "smaran --info":
+        response = "Full-Stack & iOS Dev | Rising Grade 11";
         break;
-      case "stack":
-      case "smaran --stack":
+      case cmd === "stack" || cmd === "smaran --stack":
         response = "SwiftUI, Next.js, React Native, Python, Postgres";
         break;
-      case "projects":
+      case cmd === "projects":
         response =
           "ChronoCraft (Swift), EchoNotes (React Native), Doorstep Desserts";
         break;
-      case "status":
+      case cmd === "status":
         response = "⚡ In the lab building iOS apps & prepping for hackathons";
         break;
-      case "future":
+      case cmd === "future":
         response =
-          "probable.ai (university helper), CommUnity (community app), ARKit app ";
+          "probable.ai (university helper), CommUnity (community app), ARKit app";
         break;
-      case "clear":
+      case cmd === "theme dark":
+        setTheme("dark");
+        response = "🌙 Switched to dark theme.";
+        break;
+      case cmd === "theme light":
+        setTheme("light");
+        response = "☀️ Switched to light theme.";
+        break;
+      case cmd === "date":
+        response = new Date().toUTCString();
+        break;
+      case cmd === "whoami":
+        response = "guest@smaran-portfolio ~ running zsh v5.9";
+        break;
+      case cmd === "matrix":
+        response =
+          "1110011 01111001 01110011 01110100 01100101 01101101 00100000 01101111 01101110 01101100 01101001 01101110 01100101";
+        break;
+      case cmd === "clear":
         setHistory([]);
         setInput("");
         return;
