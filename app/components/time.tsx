@@ -32,38 +32,25 @@ export default function TimeLocation() {
         setTimeZone(data.timezone);
 
         if (data.timezone) {
-          try {
-            const now = new Date();
+          const now = new Date();
 
-            const localOffsetMinutes = now.getTimezoneOffset();
+          const visitorTzDate = new Date(
+            now.toLocaleString("en-US", { timeZone: data.timezone })
+          );
+          const myTzDate = new Date(
+            now.toLocaleString("en-US", { timeZone: "America/Toronto" })
+          );
 
-            const utcDate = new Date(
-              now.toLocaleString("en-US", { timeZone: "UTC" })
-            );
-            const tzDate = new Date(
-              now.toLocaleString("en-US", { timeZone: data.timezone })
-            );
-            const diffMins =
-              (tzDate.getTime() - utcDate.getTime()) / (1000 * 60);
+          const diffMins = Math.round(
+            (visitorTzDate.getTime() - myTzDate.getTime()) / (1000 * 60)
+          );
+          const diffHours = diffMins / 60;
 
-            const hostTzDate = new Date(
-              now.toLocaleString("en-US", { timeZone: "America/Toronto" })
-            );
-            const hostDiffMins =
-              (hostTzDate.getTime() - utcDate.getTime()) / (1000 * 60);
-
-            let offsetDiffHours = (diffMins - hostDiffMins) / 60;
-
-            if (Math.abs(offsetDiffHours) < 0.25) {
-              setTimeOffsetLabel("Same time");
-            } else {
-              const sign = offsetDiffHours > 0 ? "+ hrs ahead" : "- hrs behind";
-              setTimeOffsetLabel(
-                `${sign}${Number(offsetDiffHours.toFixed(1))}h`
-              );
-            }
-          } catch (e) {
-            console.error("Error calculating timezone offset:", e);
+          if (Math.abs(diffHours) < 0.25) {
+            setTimeOffsetLabel("Same time");
+          } else {
+            const sign = diffHours > 0 ? "+" : "";
+            setTimeOffsetLabel(`${sign}${Number(diffHours.toFixed(1))}h`);
           }
         }
       } catch (err) {
