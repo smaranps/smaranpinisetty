@@ -32,39 +32,38 @@ export default function TimeLocation() {
         setTimeZone(data.timezone);
 
         if (data.timezone) {
-          const now = new Date();
+          try {
+            const now = new Date();
 
-          const visitorTimeStr = now.toLocaleTimeString("en-US", {
-            timeZone: data.timezone,
-            hour12: false,
-            hour: "2-digit",
-            minute: "2-digit",
-          });
+            const localOffsetMinutes = now.getTimezoneOffset();
 
-          const localTimeStr = now.toLocaleTimeString("en-US", {
-            hour12: false,
-            hour: "2-digit",
-            minute: "2-digit",
-          });
+            const utcDate = new Date(
+              now.toLocaleString("en-US", { timeZone: "UTC" })
+            );
+            const tzDate = new Date(
+              now.toLocaleString("en-US", { timeZone: data.timezone })
+            );
+            const diffMins =
+              (tzDate.getTime() - utcDate.getTime()) / (1000 * 60);
 
-          const [vHour, vMin] = visitorTimeStr.split(":").map(Number);
-          const [lHour, lMin] = localTimeStr.split(":").map(Number);
+            const hostTzDate = new Date(
+              now.toLocaleString("en-US", { timeZone: "America/Toronto" })
+            );
+            const hostDiffMins =
+              (hostTzDate.getTime() - utcDate.getTime()) / (1000 * 60);
 
-          const visitorTotalMins = vHour * 60 + vMin;
-          const localTotalMins = lHour * 60 + lMin;
+            let offsetDiffHours = (diffMins - hostDiffMins) / 60;
 
-          let diffMins = visitorTotalMins - localTotalMins;
-
-          if (diffMins > 720) diffMins -= 1440;
-          if (diffMins < -720) diffMins += 1440;
-
-          const diffHours = diffMins / 60;
-
-          if (Math.abs(diffHours) < 0.25) {
-            setTimeOffsetLabel("Same time");
-          } else {
-            const sign = diffHours > 0 ? "+" : "";
-            setTimeOffsetLabel(`${sign}${Number(diffHours.toFixed(1))}h`);
+            if (Math.abs(offsetDiffHours) < 0.25) {
+              setTimeOffsetLabel("Same time");
+            } else {
+              const sign = offsetDiffHours > 0 ? "+ hrs ahead" : "- hrs behind";
+              setTimeOffsetLabel(
+                `${sign}${Number(offsetDiffHours.toFixed(1))}h`
+              );
+            }
+          } catch (e) {
+            console.error("Error calculating timezone offset:", e);
           }
         }
       } catch (err) {
