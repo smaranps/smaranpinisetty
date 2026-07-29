@@ -34,24 +34,37 @@ export default function TimeLocation() {
         if (data.timezone) {
           const now = new Date();
 
-          const targetTimeString = now.toLocaleString("en-US", {
+          const visitorTimeStr = now.toLocaleTimeString("en-US", {
             timeZone: data.timezone,
+            hour12: false,
+            hour: "2-digit",
+            minute: "2-digit",
           });
-          const targetDate = new Date(targetTimeString);
 
-          const localTimeString = now.toLocaleString("en-US");
-          const localDate = new Date(localTimeString);
+          const localTimeStr = now.toLocaleTimeString("en-US", {
+            hour12: false,
+            hour: "2-digit",
+            minute: "2-digit",
+          });
 
-          const diffInHours = Math.round(
-            (targetDate.getTime() - localDate.getTime()) / (1000 * 60 * 60)
-          );
+          const [vHour, vMin] = visitorTimeStr.split(":").map(Number);
+          const [lHour, lMin] = localTimeStr.split(":").map(Number);
 
-          if (diffInHours === 0) {
+          const visitorTotalMins = vHour * 60 + vMin;
+          const localTotalMins = lHour * 60 + lMin;
+
+          let diffMins = visitorTotalMins - localTotalMins;
+
+          if (diffMins > 720) diffMins -= 1440;
+          if (diffMins < -720) diffMins += 1440;
+
+          const diffHours = diffMins / 60;
+
+          if (Math.abs(diffHours) < 0.25) {
             setTimeOffsetLabel("Same time");
-          } else if (diffInHours > 0) {
-            setTimeOffsetLabel(`+${diffInHours}h`);
           } else {
-            setTimeOffsetLabel(`${diffInHours}h`);
+            const sign = diffHours > 0 ? "+" : "";
+            setTimeOffsetLabel(`${sign}${Number(diffHours.toFixed(1))}h`);
           }
         }
       } catch (err) {

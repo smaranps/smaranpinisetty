@@ -11,7 +11,7 @@ import {
   FaExternalLinkAlt,
 } from "react-icons/fa";
 import Typewriter from "./components/typewrite";
-
+import GuestbookSection from "./components/guestbook";
 import ContactForm from "./components/form";
 import InteractiveGrid from "./components/InteractiveGrid";
 import CustomCursor from "./components/cursor";
@@ -115,7 +115,7 @@ export default function Home() {
             Experience
           </a>
           <a href="#work" className={poppins.className}>
-            Work
+            Projects
           </a>
           <a href="#contact" className={poppins.className}>
             Contact Me
@@ -364,6 +364,11 @@ export default function Home() {
             <CounterBadges />
           </div>
         </section>
+        <div
+          style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 20px" }}
+        >
+          <GuestbookSection />
+        </div>
 
         <GitHubStats username="smaranps" />
 
@@ -390,7 +395,7 @@ export default function Home() {
           style={{ textAlign: "center", marginTop: "40px" }}
           id="work"
         >
-          ⎯ My Work ⎯
+          ⎯ My Projects ⎯
         </motion.h2>
 
         <motion.div

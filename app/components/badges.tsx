@@ -46,7 +46,7 @@ export default function CounterBadges() {
   const isDark = resolvedTheme === "dark";
 
   const stats = [
-    { value: 95, suffix: "%", label: "Academic Average" },
+    { value: 7, suffix: "+", label: "Projects Built" },
     { value: 3, suffix: "+ Yrs", label: "Dev Experience" },
     { value: 10, suffix: "+", label: "Tech Stack Tools" },
   ];

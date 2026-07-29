@@ -62,11 +62,11 @@ export default function TerminalCard() {
         break;
       case cmd === "theme dark":
         setTheme("dark");
-        response = "🌙 Switched to dark theme.";
+        response = "Switched to dark theme.";
         break;
       case cmd === "theme light":
         setTheme("light");
-        response = "☀️ Switched to light theme.";
+        response = "Switched to light theme.";
         break;
       case cmd === "date":
         response = new Date().toUTCString();

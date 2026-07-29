@@ -82,9 +82,22 @@ export default function GitHubStats({ username }: { username: string }) {
               fontSize: "16px",
               color: titleColor,
               transition: "color 0.3s ease",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
             Live GitHub Activity
+            <span
+              className="live-pulse-dot"
+              style={{
+                width: "8px",
+                height: "8px",
+                backgroundColor: "#ef4444",
+                borderRadius: "50%",
+                display: "inline-block",
+              }}
+            />
           </span>
         </div>
 
