@@ -10,6 +10,7 @@ import {
   FaLinkedin,
   FaExternalLinkAlt,
 } from "react-icons/fa";
+import Projects from "./components/projects";
 import Typewriter from "./components/typewrite";
 import GuestbookSection from "./components/guestbook";
 import ContactForm from "./components/form";
@@ -386,138 +387,16 @@ export default function Home() {
 
         <InteractiveTechStack />
 
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className={poppins.className}
-          style={{ textAlign: "center", marginTop: "40px" }}
-          id="work"
-        >
-          ⎯ My Projects ⎯
-        </motion.h2>
-
         <motion.div
-          className="card-container"
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0, scale: 1.05 }}
+          exit={{ opacity: 0, y: -8, scale: 0.95 }}
+          transition={{ duration: 0.15 }}
+          id="work"
         >
-          <LinkPreview imageSrc="/doorstep.png">
-            <motion.div variants={itemVariants}>
-              <div className="card">
-                <Image
-                  src={"/doorstep.png"}
-                  alt="Doorstep Desserts"
-                  width={310}
-                  height={200}
-                  style={{ borderRadius: 15 }}
-                />
-                <h3
-                  style={{ alignSelf: "flex-start" }}
-                  className={poppins.className}
-                >
-                  Doorstep Desserts
-                </h3>
-                <p className={googleSans.className}>
-                  DoorstepDesserts is a website I made for my neighbour's baking
-                  business. It is a fully functional website that takes orders
-                  from customers and allows payments using Stripe. This website
-                  was made using React and Next.js.
-                </p>
-
-                <a
-                  className={`${googleSans.className} github-link`}
-                  href="https://doorstepdesserts-main.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaExternalLinkAlt
-                    size="0.8em"
-                    style={{ marginRight: "5px" }}
-                  />
-                  Demo
-                </a>
-              </div>
-            </motion.div>
-          </LinkPreview>
-
-          <motion.div variants={itemVariants}>
-            <LinkPreview imageSrc="https://opengraph.githubassets.com/1/smaranps/echoNotes">
-              <div className="card">
-                <Image
-                  src={"/echo.jpg"}
-                  alt="EchoNotes"
-                  width={300}
-                  height={190}
-                  style={{ borderRadius: 15 }}
-                />
-                <h3
-                  style={{ alignSelf: "flex-start" }}
-                  className={poppins.className}
-                >
-                  EchoNotes
-                </h3>
-                <p
-                  style={{ fontSize: "15px" }}
-                  className={googleSans.className}
-                >
-                  EchoNotes is an app that can take long lectures and convert
-                  them into a few sentences, making it easier to interpret for
-                  students with learning disabilities. Built using React Native
-                  and Google's Gemini 2.5 Flash model.
-                </p>
-
-                <a
-                  className={`${googleSans.className} github-link`}
-                  href="https://github.com/smaranps/echoNotes"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGithub size={20} style={{ marginRight: "5px" }} />
-                  GitHub Repository
-                </a>
-              </div>
-            </LinkPreview>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <LinkPreview imageSrc="https://opengraph.githubassets.com/1/smaranps/chronocraft">
-              <div className="card">
-                <Image
-                  src={"/ChronoCraft.png"}
-                  alt="ChronoCraft"
-                  width={300}
-                  height={200}
-                  style={{ borderRadius: 15 }}
-                />
-                <h3
-                  style={{ alignSelf: "flex-start" }}
-                  className={poppins.className}
-                >
-                  ChronoCraft
-                </h3>
-                <p className={googleSans.className}>
-                  ChronoCraft is an interactive World Builder allowing users to
-                  understand the cause and effect relationship of historical
-                  decisions. Created using SwiftUI as my submission for the
-                  Swift Student Challenge 2026.
-                </p>
-
-                <a
-                  className={`${googleSans.className} github-link`}
-                  href="https://github.com/smaranps/chronocraft/tree/main"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGithub size={20} style={{ marginRight: "5px" }} />
-                  GitHub Repository
-                </a>
-              </div>
-            </LinkPreview>
-          </motion.div>
+          <Projects />
         </motion.div>
 
         <h2
