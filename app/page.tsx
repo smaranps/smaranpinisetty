@@ -208,7 +208,7 @@ export default function Home() {
               >
                 <Image
                   className="profile-photo-card"
-                  src={"/profile.png"}
+                  src={"/memoji.png"}
                   alt="profile"
                   width={160}
                   height={185}
