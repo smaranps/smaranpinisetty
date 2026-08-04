@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Google_Sans_Flex, Poppins } from "next/font/google";
 import { motion, Variants, useSpring, useScroll } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-
 import Projects from "./components/projects";
 import Typewriter from "./components/typewrite";
 import GuestbookSection from "./components/guestbook";

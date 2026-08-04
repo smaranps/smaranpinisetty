@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { Google_Sans_Flex } from "next/font/google";
 import Image from "next/image";
 import ClientPortal from "@/app/components/portal";
+import LinkPreview from "@/app/components/preview";
+import Link from "next/link";
 
 const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
@@ -86,120 +88,122 @@ export default function BentoProjects() {
             }}
             className="bento-hover-card"
           >
-            <div
-              style={{
-                position: "absolute",
-                top: "-50px",
-                right: "-50px",
-                width: "180px",
-                height: "180px",
-                background:
-                  "radial-gradient(circle, rgba(0, 122, 255, 0.12) 0%, transparent 70%)",
-                zIndex: 0,
-                pointerEvents: "none",
-              }}
-            />
+            <LinkPreview imageSrc="https://opengraph.githubassets.com/1/smaranps/echoNotes">
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-50px",
+                  right: "-50px",
+                  width: "180px",
+                  height: "180px",
+                  background:
+                    "radial-gradient(circle, rgba(0, 122, 255, 0.12) 0%, transparent 70%)",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                }}
+              />
 
-            <div>
-              <div style={{ zIndex: 1 }}>
-                <span
+              <div>
+                <div style={{ zIndex: 1 }}>
+                  <span
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      color: "#007aff",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.8px",
+                      fontFamily: "var(--font-geist-mono, monospace)",
+                    }}
+                  >
+                    Personal AI Tutor/Helper
+                  </span>
+                  <h4
+                    style={{
+                      fontSize: "22px",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      margin: "10px 0 10px 0",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    EchoNotes
+                  </h4>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "var(--text-secondary, #555)",
+                      lineHeight: "1.6",
+                      margin: 0,
+                    }}
+                  >
+                    An app that takes long lectures and converts them into
+                    simplifies sentences, making it easier to interpret for
+                    students with learning disabilities. It also features a
+                    question and confusing words simplifier. Built using React
+                    Native and Google&apos;s Gemini Flash. Click to view the
+                    repository.
+                  </p>
+                </div>
+
+                <div
                   style={{
-                    fontSize: "11px",
-                    fontWeight: 600,
-                    color: "#007aff",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.8px",
-                    fontFamily: "var(--font-geist-mono, monospace)",
+                    display: "flex",
+                    gap: "8px",
+                    marginTop: "24px",
+                    flexWrap: "wrap",
+                    zIndex: 1,
                   }}
                 >
-                  Personal AI Tutor/Helper
-                </span>
-                <h4
-                  style={{
-                    fontSize: "22px",
-                    fontWeight: 700,
-                    color: "var(--text-primary)",
-                    margin: "10px 0 10px 0",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  EchoNotes
-                </h4>
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "var(--text-secondary, #555)",
-                    lineHeight: "1.6",
-                    margin: 0,
-                  }}
-                >
-                  An app that takes long lectures and converts them into
-                  simplifies sentences, making it easier to interpret for
-                  students with learning disabilities. It also features a
-                  question and confusing words simplifier. Built using React
-                  Native and Google&apos;s Gemini Flash. Click to view the
-                  repository.
-                </p>
+                  {["React Native", "Gemini Flash", "AI Audio"].map((tech) => (
+                    <span
+                      key={tech}
+                      style={{
+                        fontSize: "12px",
+                        padding: "6px 12px",
+                        borderRadius: "10px",
+                        background: "rgba(0, 0, 0, 0.04)",
+                        color: "var(--text-primary)",
+                        fontWeight: 500,
+                        fontFamily: "var(--font-geist-mono, monospace)",
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               <div
                 style={{
+                  width: "100%",
+                  height: "170px",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.06) 100%)",
+                  borderRadius: "16px 16px 0 0",
+                  marginTop: "32px",
                   display: "flex",
-                  gap: "8px",
-                  marginTop: "24px",
-                  flexWrap: "wrap",
-                  zIndex: 1,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderTop: "1px solid rgba(0,0,0,0.06)",
+                  overflow: "hidden",
                 }}
+                className="image-preview-box"
               >
-                {["React Native", "Gemini Flash", "AI Audio"].map((tech) => (
-                  <span
-                    key={tech}
-                    style={{
-                      fontSize: "12px",
-                      padding: "6px 12px",
-                      borderRadius: "10px",
-                      background: "rgba(0, 0, 0, 0.04)",
-                      color: "var(--text-primary)",
-                      fontWeight: 500,
-                      fontFamily: "var(--font-geist-mono, monospace)",
-                    }}
-                  >
-                    {tech}
-                  </span>
-                ))}
+                <Image
+                  src={"/echo.jpg"}
+                  alt="EchoNotes"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }}
+                />
               </div>
-            </div>
-
-            <div
-              style={{
-                width: "100%",
-                height: "170px",
-                background:
-                  "linear-gradient(135deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.06) 100%)",
-                borderRadius: "16px 16px 0 0",
-                marginTop: "32px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                borderTop: "1px solid rgba(0,0,0,0.06)",
-                overflow: "hidden",
-              }}
-              className="image-preview-box"
-            >
-              <Image
-                src={"/echo.jpg"}
-                alt="EchoNotes"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
+            </LinkPreview>
           </div>
 
           <div
             onClick={() =>
-              window.open("https://github.com/smaranps/EchoNotes", "_blank")
+              window.open("https://github.com/smaranps/ChronoCraft", "_blank")
             }
             style={{
               gridColumn: "span 7",
@@ -220,129 +224,131 @@ export default function BentoProjects() {
             }}
             className="bento-hover-card"
           >
-            <div
-              style={{
-                position: "absolute",
-                top: "-50px",
-                right: "-50px",
-                width: "180px",
-                height: "180px",
-                background:
-                  "radial-gradient(circle, rgba(140, 80, 255, 0.15) 0%, transparent 70%)",
-                zIndex: 0,
-                pointerEvents: "none",
-              }}
-            />
-
-            <div>
+            <LinkPreview imageSrc="https://opengraph.githubassets.com/1/smaranps/ChronoCraft">
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  zIndex: 1,
+                  position: "absolute",
+                  top: "-50px",
+                  right: "-50px",
+                  width: "180px",
+                  height: "180px",
+                  background:
+                    "radial-gradient(circle, rgba(140, 80, 255, 0.15) 0%, transparent 70%)",
+                  zIndex: 0,
+                  pointerEvents: "none",
                 }}
-              >
+              />
+
+              <div>
                 <div
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    fontSize: "11px",
-                    fontWeight: 600,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.8px",
-                    padding: "6px 12px",
-                    borderRadius: "99px",
-                    background: "rgba(140, 80, 255, 0.12)",
-                    color: "#7c3aed",
-                    fontFamily: "var(--font-geist-mono, monospace)",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    zIndex: 1,
                   }}
                 >
-                  Swift Student Challenge 2026
-                </div>
-              </div>
-
-              <div style={{ marginTop: "36px", zIndex: 1 }}>
-                <h4
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: 700,
-                    color: "var(--text-primary)",
-                    margin: "0 0 10px 0",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  ChronoCraft
-                </h4>
-                <p
-                  style={{
-                    fontSize: "15px",
-                    color: "var(--text-secondary, #555)",
-                    lineHeight: "1.65",
-                    margin: 0,
-                  }}
-                >
-                  An interactive World Builder allowing users to understand the
-                  cause and effect relationship of historical decisions. Created
-                  using SwiftUI as my submission for the Swift Student Challenge
-                  2026. Click the card to view the repository.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  gap: "8px",
-                  marginTop: "24px",
-                  flexWrap: "wrap",
-                  zIndex: 1,
-                }}
-              >
-                {["SwiftUI", "iOS", "Interactive Simulation"].map((tech) => (
-                  <span
-                    key={tech}
+                  <div
                     style={{
-                      fontSize: "12px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.8px",
                       padding: "6px 12px",
-                      borderRadius: "10px",
-                      background: "rgba(0, 0, 0, 0.04)",
-                      color: "var(--text-primary)",
-                      fontWeight: 500,
+                      borderRadius: "99px",
+                      background: "rgba(140, 80, 255, 0.12)",
+                      color: "#7c3aed",
                       fontFamily: "var(--font-geist-mono, monospace)",
                     }}
                   >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+                    Swift Student Challenge 2026
+                  </div>
+                </div>
 
-            <div
-              style={{
-                width: "100%",
-                height: "170px",
-                background:
-                  "linear-gradient(135deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.06) 100%)",
-                borderRadius: "16px 16px 0 0",
-                marginTop: "32px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                borderTop: "1px solid rgba(0,0,0,0.06)",
-                overflow: "hidden",
-              }}
-              className="image-preview-box"
-            >
-              <Image
-                src={"/ChronoCraft.png"}
-                alt="ChronoCraft"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
+                <div style={{ marginTop: "36px", zIndex: 1 }}>
+                  <h4
+                    style={{
+                      fontSize: "24px",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      margin: "0 0 10px 0",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    ChronoCraft
+                  </h4>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--text-secondary, #555)",
+                      lineHeight: "1.65",
+                      margin: 0,
+                    }}
+                  >
+                    An interactive World Builder allowing users to understand
+                    the cause and effect relationship of historical decisions.
+                    Created using SwiftUI as my submission for the Swift Student
+                    Challenge 2026. Click the card to view the repository.
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "8px",
+                    marginTop: "24px",
+                    flexWrap: "wrap",
+                    zIndex: 1,
+                  }}
+                >
+                  {["SwiftUI", "iOS", "Interactive Simulation"].map((tech) => (
+                    <span
+                      key={tech}
+                      style={{
+                        fontSize: "12px",
+                        padding: "6px 12px",
+                        borderRadius: "10px",
+                        background: "rgba(0, 0, 0, 0.04)",
+                        color: "var(--text-primary)",
+                        fontWeight: 500,
+                        fontFamily: "var(--font-geist-mono, monospace)",
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div
+                style={{
+                  width: "100%",
+                  height: "170px",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.06) 100%)",
+                  borderRadius: "16px 16px 0 0",
+                  marginTop: "32px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderTop: "1px solid rgba(0,0,0,0.06)",
+                  overflow: "hidden",
+                }}
+                className="image-preview-box"
+              >
+                <Image
+                  src={"/ChronoCraft.png"}
+                  alt="ChronoCraft"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </div>
+            </LinkPreview>
           </div>
 
           <div
