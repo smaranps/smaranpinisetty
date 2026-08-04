@@ -117,8 +117,8 @@ export default function TerminalCard() {
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       style={{
-        width: "320px",
-        height: "280px",
+        width: "350px",
+        height: "360px",
         borderRadius: "20px",
         marginLeft: "40px",
         backgroundColor: cardBg,
@@ -129,7 +129,7 @@ export default function TerminalCard() {
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
-        marginTop: "20px",
+        marginTop: "30px",
         fontFamily: "'Fira Code', 'Geist Mono', monospace",
         transition:
           "background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",

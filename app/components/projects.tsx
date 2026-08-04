@@ -421,7 +421,7 @@ export default function BentoProjects() {
                     }}
                     className="live-pulse-dot"
                   />
-                  Real Time Data Processor
+                  Live Data Processor
                 </div>
               </div>
 
@@ -466,7 +466,7 @@ export default function BentoProjects() {
                   "Firebase",
                   "Python",
                   "Gemini AI",
-                  "Live Historical Data",
+                  "Live Data",
                 ].map((tech) => (
                   <span
                     key={tech}

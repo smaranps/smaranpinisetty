@@ -150,32 +150,6 @@ export default function GitHubStats({ username }: { username: string }) {
               <FaStar size={10} /> Stars
             </span>
           </div>
-
-          <div style={{ textAlign: "center" }}>
-            <span
-              style={{
-                fontSize: "18px",
-                fontWeight: "bold",
-                display: "block",
-                color: countColor,
-                transition: "color 0.3s ease",
-              }}
-            >
-              {loading ? "..." : stats.forks}
-            </span>
-            <span
-              style={{
-                fontSize: "12px",
-                color: labelColor,
-                display: "flex",
-                alignItems: "center",
-                gap: "3px",
-                transition: "color 0.3s ease",
-              }}
-            >
-              <FaCodeBranch size={10} /> Forks
-            </span>
-          </div>
         </div>
       </div>
     </div>

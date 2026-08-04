@@ -3,6 +3,16 @@
 import React, { useEffect, useState } from "react";
 import { Google_Sans_Flex } from "next/font/google";
 import { useTheme } from "next-themes";
+import { rtdb } from "@/services/firebaseConfig";
+import {
+  ref,
+  push,
+  onValue,
+  onDisconnect,
+  set,
+  remove,
+  serverTimestamp,
+} from "firebase/database";
 
 const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
@@ -11,42 +21,45 @@ const googleSans = Google_Sans_Flex({
 
 export default function LiveStatus() {
   const [mounted, setMounted] = useState(false);
-  const [onlineCount, setOnlineCount] = useState(1);
+  const [onlineCount, setOnlineCount] = useState<number>(1);
   const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
 
-    setOnlineCount(Math.random() > 0.4 ? 1 : 2);
+    const activeSessionsRef = ref(rtdb, "status/active_visitors");
+    const connectedRef = ref(rtdb, ".info/connected");
 
-    let timeoutId: NodeJS.Timeout;
+    let mySessionRef: ReturnType<typeof push> | null = null;
 
-    const scheduleNextUpdate = () => {
-      const nextInterval = Math.floor(Math.random() * 9000) + 6000;
+    const unsubscribeConnected = onValue(connectedRef, (snap) => {
+      if (snap.val() === true) {
+        mySessionRef = push(activeSessionsRef);
 
-      timeoutId = setTimeout(() => {
-        setOnlineCount((prev) => {
-          const rand = Math.random();
+        onDisconnect(mySessionRef).remove();
 
-          if (rand < 0.7) {
-            return prev;
-          }
-
-          if (rand < 0.9) {
-            return Math.max(1, prev - 1);
-          }
-
-          const nextVal = prev + 1;
-          return nextVal > 4 ? 2 : nextVal;
+        set(mySessionRef, {
+          joinedAt: serverTimestamp(),
         });
+      }
+    });
 
-        scheduleNextUpdate();
-      }, nextInterval);
+    const unsubscribeCount = onValue(activeSessionsRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const count = Object.keys(snapshot.val()).length;
+        setOnlineCount(count);
+      } else {
+        setOnlineCount(1);
+      }
+    });
+
+    return () => {
+      unsubscribeConnected();
+      unsubscribeCount();
+      if (mySessionRef) {
+        remove(mySessionRef);
+      }
     };
-
-    scheduleNextUpdate();
-
-    return () => clearTimeout(timeoutId);
   }, []);
 
   const isDark = mounted && resolvedTheme === "dark";

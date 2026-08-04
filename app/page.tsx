@@ -1,11 +1,15 @@
 "use client";
 
 import React from "react";
+import FeaturedProjectCard from "./components/project";
+import LatencySimulator from "./components/simulator";
 import Image from "next/image";
+import FooterCopyright from "./components/year";
 import Link from "next/link";
 import { Google_Sans_Flex, Poppins } from "next/font/google";
 import { motion, Variants, useSpring, useScroll } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import ApiPlayground from "./components/playground";
 import Projects from "./components/projects";
 import Typewriter from "./components/typewrite";
 import GuestbookSection from "./components/guestbook";
@@ -204,25 +208,13 @@ export default function Home() {
               >
                 <Image
                   className="profile-photo-card"
-                  src={"/portfolio.png"}
+                  src={"/profile.png"}
                   alt="profile"
                   width={160}
                   height={185}
                   style={{ borderRadius: "12px", objectFit: "cover" }}
                   priority
                 />
-                <p
-                  className={googleSans.className}
-                  style={{
-                    fontSize: "11px",
-                    color: "#86868b",
-                    marginTop: "6px",
-                    marginBottom: 0,
-                    fontWeight: 600,
-                  }}
-                >
-                  2025/26
-                </p>
               </div>
             </div>
 
@@ -332,7 +324,7 @@ export default function Home() {
             className="bento-side-column"
             style={{ display: "flex", flexDirection: "column", gap: "16px" }}
           >
-            <TerminalCard />
+            <FeaturedProjectCard />
             <CounterBadges />
           </div>
         </section>
@@ -374,6 +366,21 @@ export default function Home() {
         >
           <Projects />
         </motion.div>
+        <ApiPlayground />
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "1.5rem",
+            width: "100%",
+            maxWidth: "56rem",
+            margin: "0 auto",
+            alignItems: "stretch",
+          }}
+        >
+          <LatencySimulator />
+          <TerminalCard />
+        </div>
 
         <h2
           className={poppins.className}
@@ -411,6 +418,7 @@ export default function Home() {
             <span>github.com/smaranps</span>
           </a>
         </div>
+        <FooterCopyright />
       </div>
     </div>
   );
