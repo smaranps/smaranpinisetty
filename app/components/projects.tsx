@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Google_Sans_Flex } from "next/font/google";
 import Image from "next/image";
+import ClientPortal from "@/app/components/portal";
 
 const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
@@ -642,120 +643,138 @@ export default function BentoProjects() {
           </div>
         </div>
       </section>
-
-      {isModalOpen && (
-        <div
-          onClick={closeModal}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 999999,
-            padding: "20px",
-            cursor: "default",
-          }}
-        >
+      <ClientPortal>
+        {isModalOpen && (
           <div
-            onClick={(e) => e.stopPropagation()}
+            onClick={closeModal}
             style={{
-              background: "var(--card-bg, rgba(255, 255, 255, 0.9))",
-              backdropFilter: "blur(25px)",
-              WebkitBackdropFilter: "blur(25px)",
-              border: "1px solid rgba(255, 255, 255, 0.6)",
-              borderRadius: "24px",
-              padding: "32px",
-              width: "100%",
-              maxWidth: "380px",
-              textAlign: "center",
-              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.3)",
-              animation: "popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              backgroundColor: "rgba(0, 0, 0, 0.6)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 2147483647,
+              padding: "20px",
+              cursor: "default",
             }}
           >
             <div
+              onClick={(e) => e.stopPropagation()}
               style={{
-                width: "48px",
-                height: "48px",
-                borderRadius: "50%",
-                background: "rgba(0, 122, 255, 0.1)",
-                color: "#007aff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 20px auto",
-              }}
-            >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-              </svg>
-            </div>
-            <h4
-              style={{
-                fontSize: "20px",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                margin: "0 0 10px 0",
-              }}
-              className={googleSans.className}
-            >
-              Under Development
-            </h4>
-            <p
-              style={{
-                fontSize: "14px",
-                color: "black",
-                lineHeight: "1.6",
-                margin: "0 0 24px 0",
-              }}
-              className={googleSans.className}
-            >
-              Sorry! This app is still under development. More information will
-              be revealed later.
-            </p>
-            <button
-              onClick={closeModal}
-              style={{
+                background: "var(--card-bg, rgba(255, 255, 255, 0.85))",
+                backdropFilter: "blur(30px)",
+                WebkitBackdropFilter: "blur(30px)",
+                border:
+                  "1px solid var(--card-border, rgba(255, 255, 255, 0.4))",
+                borderRadius: "28px",
+                padding: "36px 32px",
                 width: "100%",
-                padding: "12px 20px",
-                background: "var(--text-primary, #111)",
-                color: "var(--bg-color, #fff)",
-                border: "none",
-                borderRadius: "99px",
-                fontSize: "14px",
-                fontWeight: 600,
-                cursor: "pointer",
-                transition: "transform 0.2s ease",
+                maxWidth: "400px",
+                textAlign: "center",
+                boxShadow:
+                  "0 30px 60px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6)",
+                animation: "popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
-              onMouseDown={(e) =>
-                (e.currentTarget.style.transform = "scale(0.97)")
-              }
-              onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = "scale(1)")
-              }
             >
-              Got it
-            </button>
+              <div
+                style={{
+                  width: "52px",
+                  height: "52px",
+                  borderRadius: "50%",
+                  background: "rgba(0, 122, 255, 0.12)",
+                  color: "#007aff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 20px auto",
+                  boxShadow: "inset 0 0 10px rgba(0, 122, 255, 0.15)",
+                }}
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect
+                    x="3"
+                    y="11"
+                    width="18"
+                    height="11"
+                    rx="2"
+                    ry="2"
+                  ></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+
+              <h4
+                style={{
+                  fontSize: "21px",
+                  fontWeight: 700,
+                  color: "var(--text-primary, #1d1d1f)",
+                  margin: "0 0 10px 0",
+                }}
+                className={googleSans.className}
+              >
+                Under Development
+              </h4>
+
+              <p
+                style={{
+                  fontSize: "14.5px",
+                  color: "var(--text-primary, #48484a)",
+                  opacity: 0.85,
+                  lineHeight: "1.6",
+                  margin: "0 0 28px 0",
+                }}
+                className={googleSans.className}
+              >
+                Sorry! This app is still under development. More information
+                will be revealed soon.
+              </p>
+
+              <button
+                onClick={closeModal}
+                style={{
+                  width: "100%",
+                  padding: "14px 20px",
+                  background: "var(--text-primary, #111)",
+                  color: "var(--bg-primary, #fff)",
+                  border: "none",
+                  borderRadius: "99px",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  boxShadow: "0 4px 14px rgba(0, 0, 0, 0.15)",
+                  transition: "transform 0.2s ease, opacity 0.2s ease",
+                }}
+                onMouseDown={(e) =>
+                  (e.currentTarget.style.transform = "scale(0.97)")
+                }
+                onMouseUp={(e) =>
+                  (e.currentTarget.style.transform = "scale(1)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = "scale(1)")
+                }
+              >
+                Got it
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </ClientPortal>
 
       <style jsx>{`
         .bento-hover-card:hover {

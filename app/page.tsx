@@ -2,14 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Google_Sans_Flex, Poppins } from "next/font/google";
 import { motion, Variants, useSpring, useScroll } from "framer-motion";
-import {
-  FaEnvelope,
-  FaGithub,
-  FaLinkedin,
-  FaExternalLinkAlt,
-} from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+
 import Projects from "./components/projects";
 import Typewriter from "./components/typewrite";
 import GuestbookSection from "./components/guestbook";
@@ -17,7 +14,6 @@ import ContactForm from "./components/form";
 import InteractiveGrid from "./components/InteractiveGrid";
 import CustomCursor from "./components/cursor";
 import GitHubStats from "./components/stats";
-import LinkPreview from "./components/preview";
 import LiveStatus from "./components/online";
 import CursorGlow from "./components/glow";
 import TimeLocation from "./components/time";
@@ -29,7 +25,6 @@ import GlitchedName from "./components/glitchEffect";
 
 import "./app.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { FaL } from "react-icons/fa6";
 
 const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
@@ -41,28 +36,6 @@ const poppins = Poppins({
   weight: ["400", "600", "700"],
   variable: "--font-poppins",
 });
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-    },
-  },
-};
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -109,18 +82,18 @@ export default function Home() {
         }}
       >
         <nav className="floating-nav">
-          <a href="#about" className={poppins.className}>
+          <Link href="#about" className={poppins.className}>
             About
-          </a>
-          <a href="#experience" className={poppins.className}>
+          </Link>
+          <Link href="#experience" className={poppins.className}>
             Experience
-          </a>
-          <a href="#work" className={poppins.className}>
+          </Link>
+          <Link href="#work" className={poppins.className}>
             Projects
-          </a>
-          <a href="#contact" className={poppins.className}>
+          </Link>
+          <Link href="#contact" className={poppins.className}>
             Contact Me
-          </a>
+          </Link>
 
           <motion.div className="nav-progress-bar" style={{ scaleX }} />
         </nav>
@@ -208,15 +181,14 @@ export default function Home() {
                   margin: 0,
                 }}
               >
-                I live in Canada and am entering Grade 11. I started coding in
-                Grade 3 with Scratch before transitioning into web development
-                at age 10. By 13, I got my MacBook Pro and dove deep into React
-                and full-stack software development.
+                A full-stack & iOS Developer building web apps, mobile software,
+                and AI tools. An active hackathon competitor specializing mainly
+                with SwiftUI, React Native, Next.js, and Python.
                 <br />
-                <br />
-                At 14, I picked up iOS development and SwiftUI. Today, I build
-                apps, compete in hackathons, maintain a 95% academic average,
-                and stay active in clubs like DECA, Model UN, and Band.
+                <br />I focus on building high performance applications with
+                intuitive user interfaces. From real time data pipelines to
+                mobile experiences, I enjoy transforming complex technical
+                challenges into simple, user friendly software.
               </p>
 
               <div
@@ -317,13 +289,13 @@ export default function Home() {
                     fontFamily: googleSans.style.fontFamily,
                   }}
                 >
-                  DECA, Band, Basketball, Badminton
+                  Machine Learning, Python
                 </span>
               </div>
             </div>
 
             <div style={{ display: "flex", gap: "10px" }}>
-              <a
+              <Link
                 href="#work"
                 className={poppins.className}
                 style={{
@@ -336,9 +308,9 @@ export default function Home() {
                   textDecoration: "none",
                 }}
               >
-                View Work ↓
-              </a>
-              <a
+                View Work
+              </Link>
+              <Link
                 href="#contact"
                 className={poppins.className}
                 style={{
@@ -353,7 +325,7 @@ export default function Home() {
                 }}
               >
                 Get in Touch
-              </a>
+              </Link>
             </div>
           </motion.div>
 
@@ -365,8 +337,14 @@ export default function Home() {
             <CounterBadges />
           </div>
         </section>
+
         <div
-          style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 20px" }}
+          style={{
+            maxWidth: "1600px",
+            margin: "0 auto",
+            padding: "0 20px",
+            width: "100%",
+          }}
         >
           <GuestbookSection />
         </div>
@@ -388,13 +366,12 @@ export default function Home() {
         <InteractiveTechStack />
 
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          animate={{ opacity: 1, y: 0, scale: 1.05 }}
-          exit={{ opacity: 0, y: -8, scale: 0.95 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.5 }}
           id="work"
+          style={{ width: "100%" }}
         >
           <Projects />
         </motion.div>
