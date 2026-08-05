@@ -85,7 +85,12 @@ export default function InteractiveGrid() {
       const baseDotColor = isDark
         ? "rgba(255, 255, 255, 0.2)"
         : "rgba(0, 0, 0, 0.25)";
-      const activeDotColor = isDark ? "#38bdf8" : "#0071e3";
+
+      const dynamicAccent = getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent-color")
+        .trim();
+
+      const activeDotColor = dynamicAccent || (isDark ? "#38bdf8" : "#0071e3");
 
       dots.forEach((dot) => {
         const dx = mouse.x - dot.x;

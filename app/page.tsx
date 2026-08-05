@@ -6,9 +6,16 @@ import LatencySimulator from "./components/simulator";
 import Image from "next/image";
 import FooterCopyright from "./components/year";
 import Link from "next/link";
+import CommitHeatmap from "./components/heatmap";
 import { Google_Sans_Flex, Poppins } from "next/font/google";
 import { motion, Variants, useSpring, useScroll } from "framer-motion";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import LanguageBreakdown from "./components/languages";
+import {
+  FaEnvelope,
+  FaGithub,
+  FaLinkedin,
+  FaFileDownload,
+} from "react-icons/fa";
 import ApiPlayground from "./components/playground";
 import Projects from "./components/projects";
 import Typewriter from "./components/typewrite";
@@ -49,7 +56,7 @@ export default function Home() {
   });
 
   return (
-    <div className="bg relative min-h-screen">
+    <div className="bg relative min-h-screen no-scrollbar">
       <div style={{ position: "fixed", top: "20px", left: "20px", zIndex: 50 }}>
         <LiveStatus />
       </div>
@@ -148,10 +155,11 @@ export default function Home() {
                 </span>
               </h1>
               <h3
+                className="typewriter"
                 style={{
                   fontSize: "18px",
                   fontWeight: 500,
-                  color: "#0071e3",
+
                   margin: "0 0 16px 0",
                   fontFamily: "var(--font-geist-mono), monospace, system-ui",
                 }}
@@ -285,14 +293,21 @@ export default function Home() {
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
+                flexWrap: "wrap",
+                marginTop: "8px",
+              }}
+            >
               <Link
                 href="#work"
                 className={poppins.className}
                 style={{
                   padding: "10px 20px",
                   borderRadius: "9999px",
-                  backgroundColor: "#0071e3",
+                  backgroundColor: "var(--accent-color, #0071e3)",
                   color: "#fff",
                   fontSize: "13px",
                   fontWeight: 600,
@@ -301,6 +316,29 @@ export default function Home() {
               >
                 View Work
               </Link>
+
+              <a
+                href="/resume.pdf"
+                download="Smaran_Pinisetty_Resume.pdf"
+                className={poppins.className}
+                style={{
+                  padding: "10px 20px",
+                  borderRadius: "9999px",
+                  backgroundColor: "rgba(0, 113, 227, 0.1)",
+                  color: "var(--accent-color, #0071e3)",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  border: "1px solid rgba(0, 113, 227, 0.2)",
+                }}
+              >
+                <FaFileDownload size={14} />
+                <span>Resume</span>
+              </a>
+
               <Link
                 href="#contact"
                 className={poppins.className}
@@ -341,6 +379,8 @@ export default function Home() {
         </div>
 
         <GitHubStats username="smaranps" />
+        <CommitHeatmap username="smaranps" />
+        <LanguageBreakdown username="smaranps" />
 
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FaGithub, FaCodeBranch, FaStar } from "react-icons/fa";
 import { Google_Sans_Flex } from "next/font/google";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 const googleSans = Google_Sans_Flex({
   subsets: ["latin"],
@@ -70,37 +71,43 @@ export default function GitHubStats({ username }: { username: string }) {
           fontFamily: googleSans.style.fontFamily,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <FaGithub
-            size={24}
-            color={iconColor}
-            style={{ transition: "color 0.3s ease" }}
-          />
-          <span
-            style={{
-              fontWeight: 600,
-              fontSize: "16px",
-              color: titleColor,
-              transition: "color 0.3s ease",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}
-          >
-            Live GitHub Activity
-            <span
-              className="live-pulse-dot"
-              style={{
-                width: "8px",
-                height: "8px",
-                backgroundColor: "#ef4444",
-                borderRadius: "50%",
-                display: "inline-block",
-              }}
+        <Link
+          href="https://github.com/smaranps"
+          target="_blank"
+          style={{ textDecoration: "none" }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <FaGithub
+              size={24}
+              color={iconColor}
+              style={{ transition: "color 0.3s ease" }}
             />
-          </span>
-        </div>
 
+            <span
+              style={{
+                fontWeight: 600,
+                fontSize: "16px",
+                color: titleColor,
+                transition: "color 0.3s ease",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              Live GitHub Activity
+              <span
+                className="live-pulse-dot"
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  backgroundColor: "#ef4444",
+                  borderRadius: "50%",
+                  display: "inline-block",
+                }}
+              />
+            </span>
+          </div>
+        </Link>
         <div style={{ display: "flex", gap: "25px", alignItems: "center" }}>
           <div style={{ textAlign: "center" }}>
             <span
