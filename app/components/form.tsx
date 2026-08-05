@@ -59,7 +59,7 @@ export default function ContactForm() {
       return;
     }
     if (!message) {
-      setErrorMessage("Please type a message before sending.");
+      setErrorMessage("Please enter a message before sending.");
       return;
     }
 
