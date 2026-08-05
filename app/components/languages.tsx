@@ -6,7 +6,6 @@ interface LanguageBreakdownProps {
   username?: string;
 }
 
-// GitHub's official brand colors for common languages
 const LANGUAGE_COLORS: Record<string, string> = {
   TypeScript: "#3178c6",
   JavaScript: "#f1e05a",
