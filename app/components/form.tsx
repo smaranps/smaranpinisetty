@@ -22,40 +22,39 @@ const googleSans = Google_Sans_Flex({
 });
 
 async function submitContactForm(formData: FormData) {
-  const object = Object.fromEntries(formData);
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const message = formData.get("message");
+
+  const payload = {
+    access_key: "c2607d24-9921-4355-bb40-49ad73ac64b0",
+    name: name,
+    email: email,
+    message: message,
+    botcheck: "",
+  };
 
   try {
-    const response = await fetch("/api/contact", {
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      body: JSON.stringify(object),
+      body: JSON.stringify(payload),
     });
 
     const data = await response.json();
-
-    console.log("Server response:", data);
-
-    if (!response.ok || !data.success) {
-      return {
-        success: false,
-        message: data.message || "Failed to send message.",
-      };
-    }
-
-    return {
-      success: true,
-      message: data.message || "Message sent successfully!",
-    };
+    return data;
   } catch (error) {
-    console.error("Form submission error:", error);
+    console.error("Fetch Error Detail:", error);
     return {
       success: false,
-      message: "Network error on client. Please check connection.",
+      message: "Network response was blocked by your browser.",
     };
   }
 }
+
 export default function ContactForm() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
@@ -69,8 +68,9 @@ export default function ContactForm() {
     e.preventDefault();
     setErrorMessage("");
 
-    const formElements = e.currentTarget
-      .elements as typeof e.currentTarget.elements & {
+    const form = e.currentTarget;
+
+    const formElements = form.elements as typeof form.elements & {
       name: HTMLInputElement;
       email: HTMLInputElement;
       message: HTMLTextAreaElement;
@@ -103,10 +103,11 @@ export default function ContactForm() {
     try {
       const formData = new FormData(e.currentTarget);
       const data = await submitContactForm(formData);
+      console.log("Web3Forms Response:", data);
 
       if (data && data.success) {
+        form.reset();
         setStatus("success");
-        e.currentTarget.reset();
       } else {
         setStatus("error");
         setErrorMessage(
@@ -114,6 +115,7 @@ export default function ContactForm() {
         );
       }
     } catch (err) {
+      console.error("Client Submission Exception:", err);
       setStatus("error");
       setErrorMessage("Network error. Please check your connection.");
     }
@@ -344,6 +346,7 @@ export default function ContactForm() {
               {errorMessage}
             </motion.p>
           )}
+          <input type="checkbox" name="botcheck" style={{ display: "none" }} />
           <motion.button
             type="submit"
             disabled={status === "submitting"}
