@@ -22,37 +22,37 @@ const googleSans = Google_Sans_Flex({
 });
 
 async function submitContactForm(formData: FormData) {
-  const apiKey = "c2607d24-9921-4355-bb40-49ad73ac64b0";
-  formData.append("access_key", apiKey);
-
   const object = Object.fromEntries(formData);
-  const json = JSON.stringify(object);
 
   try {
-    const response = await fetch("https://api.web3forms.com/submit", {
+    const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
-      body: json,
+      body: JSON.stringify(object),
     });
 
     const data = await response.json();
 
-    if (!response.ok) {
+    console.log("Server response:", data);
+
+    if (!response.ok || !data.success) {
       return {
         success: false,
-        message:
-          data.message || `Server returned error status: ${response.status}`,
+        message: data.message || "Failed to send message.",
       };
     }
 
-    return data;
+    return {
+      success: true,
+      message: data.message || "Message sent successfully!",
+    };
   } catch (error) {
+    console.error("Form submission error:", error);
     return {
       success: false,
-      message: "Network error on server. Please check connection.",
+      message: "Network error on client. Please check connection.",
     };
   }
 }
