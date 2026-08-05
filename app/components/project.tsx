@@ -65,7 +65,6 @@ export default function FeaturedProjectCard() {
           "background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",
       }}
     >
-      {/* macOS Header Bar */}
       <div
         style={{
           padding: "10px 14px",
@@ -208,7 +207,7 @@ export default function FeaturedProjectCard() {
                 textAlign: "center",
               }}
             >
-              <Image
+              {/* <Image
                 src="/probable.png"
                 alt="Image"
                 width={280}
@@ -225,7 +224,10 @@ export default function FeaturedProjectCard() {
 
                   textAlign: "center",
                 }}
-              ></Image>
+              ></Image> */}
+              <span style={{ fontSize: "10px", color: "#1d1d1f" }}>
+                More details coming soon...
+              </span>
             </div>
 
             <div
@@ -273,9 +275,7 @@ export default function FeaturedProjectCard() {
                 lineHeight: "1.4",
               }}
             >
-              Machine learning admissions platform evaluating high school
-              metrics, course difficulty, and applicant profiles against target
-              university acceptance thresholds.
+              Stay tuned for more details!
             </p>
 
             <div style={{ marginTop: "auto" }}>

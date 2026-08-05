@@ -445,10 +445,7 @@ export default function BentoProjects() {
                     margin: 0,
                   }}
                 >
-                  An intelligent platform built for Canadian students, using
-                  real-time data to deliver accurate academic pathways and
-                  insights, helping students have a clear plan to get accepted
-                  into their top university.
+                  More details coming soon...
                 </p>
               </div>
 
