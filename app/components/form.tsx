@@ -64,7 +64,7 @@ export default function ContactForm() {
     }
 
     setStatus("submitting");
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY_FORM;
+    const apiKey = "c2607d24-9921-4355-bb40-49ad73ac64b0";
 
     const formData = new FormData(e.currentTarget);
     if (apiKey) {
