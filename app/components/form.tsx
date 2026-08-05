@@ -21,6 +21,28 @@ const googleSans = Google_Sans_Flex({
   display: "swap",
 });
 
+async function submitContactForm(formData: FormData) {
+  "use server";
+
+  const apiKey = "c2607d24-9921-4355-bb40-49ad73ac64b0";
+  formData.append("access_key", apiKey);
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return {
+      success: false,
+      message: "Network error on server. Please check connection.",
+    };
+  }
+}
+
 export default function ContactForm() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
@@ -64,20 +86,10 @@ export default function ContactForm() {
     }
 
     setStatus("submitting");
-    const apiKey = "c2607d24-9921-4355-bb40-49ad73ac64b0";
-
-    const formData = new FormData(e.currentTarget);
-    if (apiKey) {
-      formData.append("access_key", apiKey);
-    }
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
+      const formData = new FormData(e.currentTarget);
+      const data = await submitContactForm(formData);
 
       if (data.success) {
         setStatus("success");
@@ -134,9 +146,12 @@ export default function ContactForm() {
           color: textColor,
           margin: "0 0 8px 0",
           fontFamily: "var(--font-geist-mono), monospace, system-ui",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
         }}
       >
-        Send a Message <FaEnvelope size={20} />
+        Send a Message <FaEnvelope size={18} />
       </h3>
       <p
         style={{
