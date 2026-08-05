@@ -31,7 +31,21 @@ async function submitContactForm(formData: FormData) {
       body: formData,
     });
 
-    const data = await response.json();
+    if (!response.ok) {
+      return {
+        success: false,
+        message: `Server returned error status: ${response.status}`,
+      };
+    }
+
+    const text = await response.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = { success: true };
+    }
+
     return data;
   } catch (error) {
     return {
@@ -89,13 +103,13 @@ export default function ContactForm() {
       const formData = new FormData(e.currentTarget);
       const data = await submitContactForm(formData);
 
-      if (data.success) {
+      if (data && data.success) {
         setStatus("success");
         e.currentTarget.reset();
       } else {
         setStatus("error");
         setErrorMessage(
-          data.message || "Something went wrong. Please try again."
+          data?.message || "Something went wrong. Please try again."
         );
       }
     } catch (err) {
