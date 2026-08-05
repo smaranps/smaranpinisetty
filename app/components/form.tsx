@@ -25,25 +25,27 @@ async function submitContactForm(formData: FormData) {
   const apiKey = "c2607d24-9921-4355-bb40-49ad73ac64b0";
   formData.append("access_key", apiKey);
 
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
     });
+
+    const data = await response.json();
 
     if (!response.ok) {
       return {
         success: false,
-        message: `Server returned error status: ${response.status}`,
+        message:
+          data.message || `Server returned error status: ${response.status}`,
       };
-    }
-
-    const text = await response.text();
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      data = { success: true };
     }
 
     return data;
@@ -54,7 +56,6 @@ async function submitContactForm(formData: FormData) {
     };
   }
 }
-
 export default function ContactForm() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
