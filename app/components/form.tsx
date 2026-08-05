@@ -22,8 +22,6 @@ const googleSans = Google_Sans_Flex({
 });
 
 async function submitContactForm(formData: FormData) {
-  "use server";
-
   const apiKey = "c2607d24-9921-4355-bb40-49ad73ac64b0";
   formData.append("access_key", apiKey);
 
