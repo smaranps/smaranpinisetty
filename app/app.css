@@ -792,7 +792,13 @@ html.dark .params-bar select {
   .bg {
     padding-top: 40px;
   }
-
+  .responsive {
+    padding-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 14px;
+  }
   .bento-hero {
     grid-template-columns: 1fr !important;
     gap: 16px;
